@@ -52,4 +52,4 @@ public class 문자열뒤집기2 {
 			System.out.print(s);
 		}
 	}
-}
+} 
