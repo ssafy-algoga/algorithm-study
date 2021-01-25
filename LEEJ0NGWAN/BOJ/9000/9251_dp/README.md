@@ -6,7 +6,7 @@
 
 ## 🅰 설계
 
-[paint](./9251_paint.jpg)
+![paint](./9251_paint.jpg)
 
 ### 초기화
 
@@ -83,7 +83,7 @@ public class P9251 {
 }
 ```
 
-[result](./9251_result.jpg)
+![result](./9251_result.jpg)
 
 ## ✅ 후기
 
