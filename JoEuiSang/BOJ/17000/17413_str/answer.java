@@ -48,11 +48,8 @@ public class 문자열뒤집기2 {
 			}
 		}
 		
-		for (String s : ans) {
-			System.out.print(s);
-		}
-		
-		
+		for (String str : ans) {
+			System.out.print(str);
+		}	
 	}
-
 }
