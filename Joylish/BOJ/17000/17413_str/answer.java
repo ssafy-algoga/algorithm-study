@@ -11,55 +11,56 @@ public class Main {
 	static BufferedReader br;
 	static StringTokenizer st;
 	static StringBuilder sb;
-	static StringBuilder sbForStack;
+	static StringBuilder sbForReversed;
 
 	public static void main(String[] args) throws IOException {
 		System.setIn(new FileInputStream("단어뒤집기2_input.txt"));
+		
 		br = new BufferedReader(new InputStreamReader(System.in));
-		sb = new StringBuilder();
-		sbForStack = new StringBuilder();
-
 		char[] str = br.readLine().toCharArray();
-
-		boolean isInBracket = false;
-		boolean isInStack = true;
+		
+		sb = new StringBuilder();
+		sbForReversed = new StringBuilder();
+		
+		boolean isInTag = false;
+		boolean isInWord = true;
 
 		for (int j = 0; j < str.length; j++) {
 			if (str[j] == '<') {
-				if (isInStack) {
-					sb.append(sbForStack.reverse().toString());
-					sbForStack.setLength(0);
-					isInStack = false;
+				if (isInWord) {
+					sb.append(sbForReversed.reverse());
+					sbForReversed.setLength(0);
+					isInWord = false;
 				}
-				isInBracket = true;
+				isInTag = true;
 				sb.append(str[j]);
 			}
 
 			else if (str[j] == '>') {
 				sb.append(str[j]);
-				isInBracket = false;
-				isInStack = true;
+				isInTag = false;
+				isInWord = true;
 			}
 
 			else if (str[j] == ' ') {
-				if (sbForStack.length() > 0) {
-					sb.append(sbForStack.reverse().toString());
-					sbForStack.setLength(0);
+				if (sbForReversed.length() > 0) {
+					sb.append(sbForReversed.reverse());
+					sbForReversed.setLength(0);
 				}
 				sb.append(' ');
 			} else {
-				if (isInBracket)
+				if (isInTag)
 					sb.append(str[j]);
-				if (isInStack) {
-					sbForStack.append(str[j]);
+				if (isInWord) {
+					sbForReversed.append(str[j]);
 					if (j == str.length - 1) {
-						sb.append(sbForStack.reverse().toString());
-						sbForStack.setLength(0);
+						sb.append(sbForReversed.reverse());
+						sbForReversed.setLength(0);
 					}
 				}
 			}
 
 		}
-		System.out.println(sb.toString());
+		System.out.println(sb);
 	}
 }
