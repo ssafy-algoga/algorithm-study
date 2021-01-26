@@ -11,7 +11,6 @@ public class WordSwapping {
         writer.close();
     }
     public static String solution(String p){
-        String answer;
         boolean isTag = false;
 
         StringBuilder sb = new StringBuilder();
@@ -48,7 +47,6 @@ public class WordSwapping {
                 sb.append(tmp.reverse());
             }
         }
-        answer = sb.toString();
-        return answer;
+        return sb.toString();
     }
 }
