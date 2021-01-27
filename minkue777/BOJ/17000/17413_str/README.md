@@ -10,7 +10,7 @@
 
 <br>
 
-![ex_screenshot](./figure/1.png)
+![ex_screenshot](./figure/1.jpg)
 
 ```java 
 int idx = input.indexOf(" ");
@@ -24,7 +24,7 @@ return new StringBuffer(input.substring(0, idx)).reverse().toString() + " "
 
 <br>
 
-![ex_screenshot](./figure/2.png)
+![ex_screenshot](./figure/2.jpg)
 
 ```java 
 int forwardIdx = input.indexOf("<");
