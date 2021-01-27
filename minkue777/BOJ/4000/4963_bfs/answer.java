@@ -25,11 +25,11 @@ public class Main {
     public static int dfs(Node node) {
         field[node.y][node.x] = -1;
         for(int i=0; i<8; ++i) {
-            int nextY = node.y + dy[i];
-            int nextX = node.x + dx[i];
-            if(nextX < 0 || nextY < 0 || nextY >= field.length || nextX >= field[0].length)
+            int ny = node.y + dy[i];
+            int nx = node.x + dx[i];
+            if(nx < 0 || ny < 0 || ny >= field.length || nx >= field[0].length)
                 continue;
-            if(field[nextY][nextX] == 1) dfs(new Node(nextY, nextX));
+            if(field[ny][nx] == 1) dfs(new Node(ny, nx));
         }
         return 1;
     }
@@ -43,11 +43,11 @@ public class Main {
             Node node = q.poll();
             field[node.y][node.x] = -1;
             for(int i=0; i<8; ++i) {
-                int nextY = node.y + dy[i];
-                int nextX = node.x + dx[i];
-                if (nextX < 0 || nextY < 0 || nextY >= field.length || nextX >= field[0].length)
+                int ny = node.y + dy[i];
+                int nx = node.x + dx[i];
+                if (nx < 0 || ny < 0 || ny >= field.length || nx >= field[0].length)
                     continue;
-                if (field[nextY][nextX] == 1) q.offer(new Node(nextY, nextX));
+                if (field[ny][nx] == 1) q.offer(new Node(ny, nx));
             }
         }
         return 1;
