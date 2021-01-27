@@ -10,7 +10,7 @@
 
 <br>
 
-![ex_screenshot](./figure/3.jpg)
+![ex_screenshot](./figure/1.jpg)
 
 ```java 
 int idx = input.indexOf(" ");
@@ -29,7 +29,7 @@ return new StringBuffer(input.substring(0, idx)).reverse().toString() + " "
 ```java 
 int forwardIdx = input.indexOf("<");
 if (forwardIdx != -1) {
-    int backwardIdx = input.indexOf('>');
+    int backwardIdx = input.indexOf(">");
     return reverseWords(input.substring(0, forwardIdx)) +
         input.substring(forwardIdx, backwardIdx+1) +
         reverseWords(input.substring(backwardIdx+1));
@@ -43,3 +43,4 @@ if (forwardIdx != -1) {
 DP를 풀 때에도 바텀업 방식보다 탑다운 방식이 직관적으로 잘 와닿기도 하구요.
 사실 반복문 자체가 동일한 작업을 수행하는 일 이기 때문에 언제든지 재귀호출을
 할 여지가 있다는 사실을 상기하려고 노력중입니다.
+P.S 이미지 태그가 안먹어서 그림 크기 조절이 안돼요..

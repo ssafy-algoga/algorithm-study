@@ -8,7 +8,7 @@ public class Main {
         // process <> first
         int forwardIdx = input.indexOf("<");
         if (forwardIdx != -1) {
-            int backwardIdx = input.indexOf('>');
+            int backwardIdx = input.indexOf(">");
             return reverseWords(input.substring(0, forwardIdx)) +
                     input.substring(forwardIdx, backwardIdx+1) +
                     reverseWords(input.substring(backwardIdx+1));
