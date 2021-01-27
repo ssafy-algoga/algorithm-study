@@ -3,11 +3,20 @@
 <p align=center>
 <img src="https://cdn.uc.assets.prezly.com/2619a11f-0441-48af-8784-36dc8e204bcf/-/resize/1200x/-/format/auto/" height=500>
 </p>
+
 ## 1. What
 Baekjoon, Programmers 등에서 Baekjoon 기준 from 실버 to 골드인 문제를 선별해서 풉니다. 
-- [이번 주 풀어야할 문제 보러가기](https://www.notion.so/4b5b2f9465c94258af50d5a836b429cc?v=9677bbf83b0d43eda686ddd500a4087d)
-- [풀고 싶은 문제 추천하러 가기](https://www.notion.so/48f4281db6344a53ad3092c226a16461)
 
+<h4>
+    <a href="https://www.notion.so/4b5b2f9465c94258af50d5a836b429cc?v=9677bbf83b0d43eda686ddd500a4087d">
+        😎 이번 주 풀어야할 문제 보러가기
+    </a>
+</h4>
+<h4>
+    <a href="https://www.notion.so/48f4281db6344a53ad3092c226a16461"> 
+        😗 풀고 싶은 문제 추천하러 가기 
+    </a>
+</h4>
 ## 2.  How
 -`Pull Request` 자기 계정으로 해당 Repository fork 하기
 - 주말에 그 다음주에 풀 문제 정하기
@@ -44,7 +53,7 @@ git commit -m "code : 자기이름 문제플랫폼 문제번호 문제유형 문
 git add answer.java
 git commit -m "code : boj 1000"
 ```
-코드에 대한 설명을 작성한 문서를 하나의 커밋으로 분리합니ㅏ. 
+코드에 대한 설명을 작성한 문서를 하나의 커밋으로 분리합니다. 
 ```bash
 git add README.md
 git commit -m "docs : boj 1000"
