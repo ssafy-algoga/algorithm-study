@@ -10,7 +10,7 @@
 
 <br>
 
-![ex_screenshot](./figure/1.jpg)
+![ex_screenshot](./figure/3.jpg)
 
 ```java 
 int idx = input.indexOf(" ");
