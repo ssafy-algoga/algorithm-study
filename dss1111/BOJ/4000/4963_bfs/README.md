@@ -15,7 +15,8 @@ public class Main {
 	static int []dx = {-1,-1,1,0,1,0,1,-1};
 	static int []dy = {0,1,1,1,0,-1,-1,-1};
 	static int w,h;
-	
+	static int [][]world;
+	static boolean [][]visit;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
@@ -28,8 +29,8 @@ public class Main {
 			h=Integer.parseInt(st.nextToken()); //h받기
 			if(w==0 && h==0)
 				break;
-			int [][]world=new int[h][w];	//배열 땅,바다
-			boolean [][]visit=new boolean[h][w]; //각땅의 탐색여부 체크
+			world=new int[h][w];	//배열 땅,바다
+			visit=new boolean[h][w]; //각땅의 탐색여부 체크
 			for(i=0;i<h;i++)
 			{
 				st=new StringTokenizer(br.readLine());
@@ -39,22 +40,22 @@ public class Main {
 				}
 			}
 			////////////////여기까지 입력완료/////////////
-			getResult(world,visit); //결과보기
+			getResult(); //결과보기
 		}
 	}
-	public static void getResult(int[][] world,boolean [][] visit) {
+	public static void getResult() {
 		int count=0; //섬의 갯수
 		for(int i=0;i<h;i++){
 			for(int j=0;j<w;j++){
 				if(visit[i][j]==false && world[i][j]==1) { //미탐색이고 땅이면
-					dfs(i,j,world,visit); //주변을 탐색하러 갑니다
+					dfs(i,j); //주변을 탐색하러 갑니다
 					count++;			  //섬++
 				}
 			}
 		}
 		System.out.println(count);
 	}
-	public static void dfs(int x,int y, int[][] world,boolean[][] visit) {
+	public static void dfs(int x,int y) {
 		visit[x][y]=true; //탐색했음 체크
 
 		for(int i=0;i<8;i++) {
@@ -65,7 +66,7 @@ public class Main {
 				continue;
 			}
 			if(world[nx][ny]==1 && visit[nx][ny]==false) { //땅이있고 미탐색지역이면
-				dfs(nx,ny,world,visit); //탐색
+				dfs(nx,ny); //탐색
 			}
 		}
 	}
