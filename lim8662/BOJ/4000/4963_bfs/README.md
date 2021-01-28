@@ -8,7 +8,7 @@ int[][] map : 맵의 땅, 바다 여부를 저장할 배열
 
 boolean[][] visited : 맵의 방문 여부를 저장할 배열
 
-두 2차원 배열을 이용해서 재귀적으로 DFS(깊이 우선 탐색)으로 구현하였습니다. 
+두 2차원 배열을 이용해서 재귀적으로 DFS(깊이 우선 탐색)을 구현하였습니다. 
 
 ```jsx
 public class Main {
@@ -27,45 +27,44 @@ public class Main {
 map을 입력받고 완전탐색을 합니다. 
 
 방문하지 않은 땅인 경우에만 DFS를 시행하고 섬의 개수를 증가시킵니다.
-```
-	public static void main(String[] args) throws IOException {
+```jsx
+public static void main(String[] args) throws IOException {
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	StringTokenizer st;
 
-		while (true) {
+	while (true) {
+		st = new StringTokenizer(br.readLine());
+		col = Integer.parseInt(st.nextToken());
+		row = Integer.parseInt(st.nextToken());
+		cnt = 0;	
+
+		// 종료
+		if (col == 0 && row == 0)
+			break;
+
+		map = new int[row][col];
+		visited = new boolean[row][col];
+		
+		// 맵 입력받기
+		for (int r = 0; r < row; r++) {
 			st = new StringTokenizer(br.readLine());
-			col = Integer.parseInt(st.nextToken());
-			row = Integer.parseInt(st.nextToken());
-			cnt = 0;
-
-			// 종료
-			if (col == 0 && row == 0)
-				break;
-
-			map = new int[row][col];
-			visited = new boolean[row][col];
-			
-			// 맵 입력받기
-			for (int r = 0; r < row; r++) {
-				st = new StringTokenizer(br.readLine());
-				for (int c = 0; c < col; c++) {
-					map[r][c] = Integer.parseInt(st.nextToken());
-				}
+			for (int c = 0; c < col; c++) {
+				map[r][c] = Integer.parseInt(st.nextToken());
 			}
-			// 맵 전체 탐색
-			for (int r = 0; r < row; r++) {
-				for (int c = 0; c < col; c++) {
-					if (map[r][c] == 1 && !visited[r][c]) {
-						dfs(r, c);
-						cnt++;
-					}
-				}
-			}
-			System.out.println(cnt);
 		}
+		// 맵 전체 탐색
+		for (int r = 0; r < row; r++) {
+			for (int c = 0; c < col; c++) {
+				if (map[r][c] == 1 && !visited[r][c]) {
+					dfs(r, c);
+					cnt++;
+				}
+			}
+		}
+		System.out.println(cnt);
 	}
-}
+}	
 ```
 
 ### 3. dfs()
@@ -74,24 +73,24 @@ map을 입력받고 완전탐색을 합니다.
 인접 구획의 경계 및 방문 여부를 체크하고,
 
 방문하지 않은 땅이라면 다시 DFS를 시행합니다.
-```
-	public static void dfs(int r, int c) {
-		visited[r][c] = true;
+```jsx
+public static void dfs(int r, int c) {
+	visited[r][c] = true;
 		
-		for (int d = 0; d < dx.length; d++) {
-			int nx = r + dx[d];
-			int ny = c + dy[d];
+	for (int d = 0; d < dx.length; d++) {
+		int nx = r + dx[d];
+		int ny = c + dy[d];
 
-			if (nx < 0 || nx >= row || ny < 0 || ny >= col || visited[nx][ny])
-				continue;
+		if (nx < 0 || nx >= row || ny < 0 || ny >= col || visited[nx][ny])
+			continue;
 
-			if (map[nx][ny] == 0) // 바다면 넘어감
-				continue;
-			else { // 땅이면 재탐색
-				dfs(nx, ny);
-			}
+		if (map[nx][ny] == 0) // 바다면 넘어감
+			continue;
+		else { // 땅이면 재탐색
+			dfs(nx, ny);
 		}
 	}
+}
 ```
 ## ✅ 후기
 ### 새롭게 알게되거나 공유해서 알게된 점
