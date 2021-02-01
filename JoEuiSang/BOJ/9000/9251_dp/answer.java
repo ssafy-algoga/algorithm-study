@@ -1,4 +1,4 @@
-package _1월_5주차;
+package _1월_5주차; 
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
