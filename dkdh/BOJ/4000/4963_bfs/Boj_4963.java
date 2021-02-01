@@ -48,11 +48,12 @@ public class Boj_4963 {
 			for (int i = 0; i < h; i++) {
 				for (int j = 0; j < w; j++) {
 					
+					// 방문한 적 있거나 바다 지역이면 탐색x
 					if(visited[i][j]==true || map[i+1][j+1]==0)
 						continue;
 					
 					// 방문한 적 없는 각 '땅' 지역에 대해	
-					visited = bfs(map, visited, i+1, j+1);
+					dfs(map, visited, i+1, j+1);
 					count++;
 				}
 			}
@@ -60,10 +61,10 @@ public class Boj_4963 {
 		}
 	}
 	
-	public static boolean[][] bfs(int[][] map, boolean[][] visited, int r, int c) {
+	public static void dfs(int[][] map, boolean[][] visited, int r, int c) {
 		// 이미 방문한 지역이라면 탐색x
 		if(visited[r-1][c-1]==true)
-			return visited;
+			return;
 		
 		// 방문 마킹
 		visited[r-1][c-1] = true;
@@ -72,12 +73,11 @@ public class Boj_4963 {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				if(map[r-1+i][c-1+j]==1) {
-					visited = bfs(map, visited, r-1+i, c-1+j);
+					dfs(map, visited, r-1+i, c-1+j);
 				}
 			}
 		}
-		
-		return visited;
+
 	}
 
 }
