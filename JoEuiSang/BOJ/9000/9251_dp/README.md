@@ -5,7 +5,7 @@
 시간초과떴는데 일단 이거라도 올려보겠습니다. 어느부분이 문제일지 리뷰 부탁드려요!!
 
 ## 🅰 설계
-<ima src = "https://user-images.githubusercontent.com/69133236/106415974-bdaaf580-6493-11eb-889b-4b9518ab2131.jpg" height = 700>
+<im src = "https://user-images.githubusercontent.com/69133236/106415974-bdaaf580-6493-11eb-889b-4b9518ab2131.jpg" height = 700>
 
 각 수열을 단계단계로 뻗어나가는 방식으로 접근해봤습니다.
 두 문자가 같으면 인덱스를 둘다 증가시켜주고, 아니라면 수열1, 수열2 의 인덱스가 각각 증가하는 경우를 둘다 체크하도록 하였습니다.
