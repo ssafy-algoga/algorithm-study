@@ -52,6 +52,8 @@ public class Main_15663 {
 		
 		for(int i=0; i<N; i++) {
 			if(isSelected[i]) continue;
+			// 지금 확인하려는 숫자가 이전 숫자랑 같고 이전 숫자가 선택된 적 없다면
+			//  -> 앞의 숫자가 선택되지 않았는데 뒤의 숫자가 선택된다는 상황은 있을 수 없으므로 중복이 발생한 것
 			if(i!=0 && !isSelected[i-1]  && numbers[i-1]==numbers[i]) continue;
 			
 			p[cnt] = numbers[i];
@@ -63,6 +65,7 @@ public class Main_15663 {
 	}
 	
 	public static void permutation1(int cnt) {
+		// 기저 조건
 		if(cnt==M) {
 			for (int i = 0; i < M; i++) {
 				sb.append(p[i]).append(" ");
@@ -71,28 +74,25 @@ public class Main_15663 {
 			return;
 		}
 	
+		// 중복 제거를 위한 Set 자료 구조
 		HashSet<Integer> set = new HashSet<Integer>();
 		for (int i = 0; i < N; i++) {
 			set.add(numbers[i]);
 		}
+		
+		// Set에 있는 자연수들에 대해
 		for (int num : set) {
-			int i = 0;
 			for (int j = 0; j < N; j++) {
-				if(numbers[j]==num) {
-					i = j;
-					if(isSelected[j]==false) {
-						break;
-					}
+				if(numbers[j]==num && isSelected[j]==false) {
+					p[cnt] = num;
+					isSelected[j] = true;
+					
+					permutation1(cnt+1);
+					isSelected[j] = false;
+					break;
 				}
 			}
-			
-			if(isSelected[i]) continue;
-			
-			p[cnt] = num;
-			isSelected[i] = true;
-			
-			permutation(cnt+1);
-			isSelected[i] = false;
+
 		}
 	}
 	
