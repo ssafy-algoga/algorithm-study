@@ -31,7 +31,7 @@ public class Main {
 					for(int[] dir: dir) {
 						int nextX = X + dir[0] * num;
 						int nextY = Y + dir[1] * num;
-						boolean isInMap = 0<=nextX && nextX <= rowLen && 0<=nextY && nextY <= colLen;
+						boolean isInMap = nextX <= rowLen && nextY <= colLen;
 						
 						if(!isInMap)
 							break EXPAND;
