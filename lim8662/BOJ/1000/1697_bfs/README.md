@@ -7,19 +7,23 @@
 
 노드 마다 Nx2, N-1, N+1 세 노드로 분기되고 각 노드를 너비 우선 탐색하였습니다.
 
-
 ---
+
 ### 1. 선언부
+
 ```java
 static int N, K, step;
 static boolean[] visited = new boolean[1000001]; // 해당 위치의 방문 여부 
 ```
+
 boolean 배열로 위치의 방문 여부를 저장해서 중복 방문를 방지하였고
 
 step은 현재 탐색중인 깊이를 기록합니다.
+
 ---
 
 ### 2. 너비 우선 탐색
+
 ```java
 private static void bfs() {
 	Queue<Integer> q = new LinkedList<>();
@@ -51,8 +55,13 @@ private static void bfs() {
 	}
 }
 ```
-queue에 탐색할 위치를 순서대로 넣고 
+
+queue에 탐색할 위치를 순서대로 넣고 같은 단계의 모든 위치를 꺼내 찾았는지 확인합니다.
+
+아니면 다음 분기 위치를 큐에 저장하는데 경계 및 방문 여부를 체크합니다. 
+
 ---
+
 
 ## ✅ 후기
 풀어보니 제가 추가한 DP 문제가 아니였습니다... (1로 만들기-DP) 
