@@ -4,12 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/*
-3 5
-42101
-22100
-22101
-*/
 public class 숫자정사각형 {
 	static int R; //행 크기
 	static int C; //열 열기
