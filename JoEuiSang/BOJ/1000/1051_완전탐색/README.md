@@ -2,7 +2,8 @@
 [문제 보러가기](https://www.acmicpc.net/problem/1051)
 
 ## 🅰 설계
-<img src:"https://user-images.githubusercontent.com/69133236/107137993-e0864f80-6954-11eb-9b61-ef4f58927025.jpg" height=400>
+
+<img src="https://user-images.githubusercontent.com/69133236/107137993-e0864f80-6954-11eb-9b61-ef4f58927025.jpg" height="400">
 베이스는 완전탐색이며, 살짝 응용을 하면 풀 수 있는 문제이다
 입력값이 50 이하이기 때문에 4제곱을 해도 625만으로 시간이 넉넉하여 고민없이 4중 반복문을 사용하였다.
 
