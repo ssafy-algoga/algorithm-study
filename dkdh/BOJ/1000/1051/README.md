@@ -16,16 +16,16 @@ max를 1씩 줄이면서 반복문을 돌리며 정사각형의 꼭짓점의 값
 확인되면 반복문에서 빠져나갑니다.
 ```jsx
 LOOP: while(max>0) {
-			for (int i = 0; i <= N-max; i++) {
-				for (int j = 0; j <= M-max; j++) {
-					if(map[i][j]==map[i+max-1][j] 
-							&& map[i][j+max-1]==map[i+max-1][j+max-1]
-									&& map[i][j]==map[i][j+max-1])
+	for (int i = 0; i <= N-max; i++) {
+		for (int j = 0; j <= M-max; j++) {
+			if(map[i][j]==map[i+max-1][j] 
+				&& map[i][j+max-1]==map[i+max-1][j+max-1]
+					&& map[i][j]==map[i][j+max-1])
 						break LOOP;
-				}
-			}
-			max--;
 		}
+	}
+	max--;
+}
 ```
 
 그리고 max 값의 제곱을 출력합니다!
@@ -61,7 +61,7 @@ public class Main_1051_숫자정사각형 {
 		}
 		
 		int max = N < M ? N : M;
-LOOP: while(max>0) {
+LOOP: 		while(max>0) {
 			for (int i = 0; i <= N-max; i++) {
 				for (int j = 0; j <= M-max; j++) {
 					if(map[i][j]==map[i+max-1][j] 
