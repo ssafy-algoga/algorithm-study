@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -21,7 +22,13 @@ public class Main {
         N = parse(st.nextToken()); //수빈이 위치
         K = parse(st.nextToken()); //동생 위치
 
+        if(N>=K) {
+            System.out.println(N-K);
+            return;
+        }
+        
         q.add(N); // 처음 수빈이 위치 q에 추가
+        Arrays.fill(visit, -1);
         visit[N] = 0; // 처음 수빈이가 있는 자리이므로 0으로 시작
 
         while(!q.isEmpty()){
