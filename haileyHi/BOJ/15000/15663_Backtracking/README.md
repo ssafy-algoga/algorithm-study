@@ -33,7 +33,6 @@
         }
 ```
 
-**코드**
 ```java
 public class Main {
     static boolean[] chosen;
