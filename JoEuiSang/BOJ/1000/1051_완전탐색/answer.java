@@ -1,4 +1,4 @@
-package 스터디._2월1주;
+package 스터디._2월1주; 
 
 import java.io.BufferedReader;
 import java.io.IOException;
