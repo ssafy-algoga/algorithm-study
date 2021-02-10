@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-    static final int MAX = 1000001; // 인덱스 1부터 시작하기 때문에
+    static final int MAX = 100001; // 인덱스 1부터 시작하기 때문에
     static Queue<Integer> q = new ArrayDeque<Integer>();
     static int N;
     static int K;
