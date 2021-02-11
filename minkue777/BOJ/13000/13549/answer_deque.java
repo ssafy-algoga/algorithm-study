@@ -29,9 +29,15 @@ public class Main {
             int[] nextNodes = new int[] {2 * curNode, curNode-1, curNode+1};
             for(int i=0; i<3; i++) {
                 int nextNode = nextNodes[i];
-                if (nextNode >= 0 && nextNode <= MAX_SIZE && distance[nextNode] == -1) {
-                    if(i == 0) q.addFirst(nextNode);
-                    else q.addLast(nextNode);
+                if(i == 0) {
+                    while(nextNode>=0 && nextNode<=MAX_SIZE && distance[nextNode] == -1) {
+                        q.addFirst(nextNode);
+                        distance[nextNode] = distance[curNode] + weight[i];
+                        nextNode *= 2;
+                    }
+                }
+                else {
+                    q.addLast(nextNode);
                     distance[nextNode] = distance[curNode] + weight[i];
                 }
             }
