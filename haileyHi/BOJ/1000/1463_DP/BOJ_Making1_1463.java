@@ -38,7 +38,7 @@ public class BOJ_Making1_1463 {
                 deque.offer(cur - 1);
                 range[cur - 1] = Math.min(tmp + 1, range[cur - 1]);
             }
-            if (range[1] != 0 && range[1] != N) break;
+            if (range[1] != N) break;
         }
 
 
