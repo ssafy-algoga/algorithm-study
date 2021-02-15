@@ -71,15 +71,15 @@ public class Main_1018_체스판다시칠하기 {
 		int wCnt = 0;
 		int bCnt = 0;
 		
-    // 처음 시작이 검정일 때 각 칸이 가져야 할 색을 저장할 변수
+    		// 처음 시작이 검정일 때 각 칸이 가져야 할 색을 저장할 변수
 		int bRight = 1;
 		
-    // 입력된 보드의 칸의 색을 저장할 변수
+    		// 입력된 보드의 칸의 색을 저장할 변수
 		int cur;
 		
 		for (int i = rStart; i < rStart + 8; i++) {
 			for (int j = cStart; j < cStart + 8; j++) {
-        // 현재 칸의 색
+        			// 현재 칸의 색
 				cur = board[i][j];
 				
 				if(cur != bRight) {
