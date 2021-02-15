@@ -29,5 +29,73 @@ bfs는 레벨순으로 탐색하기 때문에 탐색 중 만약 도착 지점 K�
 위의 숨바꼭질 1처럼 레벨 별 탐색이 각 시간 초 별 탐색이 되어야 합니다.   
 이를 위해 0초만에 이동할 수 있는 x2 순간이동을 수행한 지점들은 먼저 큐에 모두 넣어 같은 시각에 발생하는 경우가 우선적으로 탐색되도록 해줘야 합니다.
 
+
+### 코드
+```jsx
+package boj;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Main_13549_숨바꼭질3 {
+
+	public static void main(String[] args) {
+		
+		int Limit = 100000;
+		
+		// 입력 받기
+		Scanner sc = new Scanner(System.in);
+	
+		int N = sc.nextInt();
+		int K = sc.nextInt();
+		
+		sc.close();
+		
+		Queue<Integer> queue = new ArrayDeque<Integer>();
+		int[] times = new int[Limit+1];
+		
+		// bfs
+		int cur;
+		
+		// 초기 루트 설정
+		times[N] = 1;
+		queue.add(N);
+		
+		while(!queue.isEmpty()) {
+			cur = queue.poll();
+			
+			if(cur==K) {
+				System.out.println(times[K]-1);
+				break;
+			}
+			
+			int ncur = cur*2;
+			while(ncur>0 && ncur<=Limit) {
+				if(times[ncur]==0) {
+					times[ncur] = times[cur];
+					queue.add(ncur);
+				}
+				ncur *= 2;
+			}
+
+			ncur = cur-1;
+			if(ncur>=0 && times[ncur]==0) {
+				times[ncur] = times[cur]+1;
+				queue.add(ncur);
+			}
+			ncur = cur+1;
+			if(ncur<=Limit && times[ncur]==0) {
+				times[ncur] = times[cur]+1;
+				queue.add(ncur);
+			}
+		}
+		
+	}
+
+}
+
+```
+
 ## ✅ 후기
 처음에 보고 숨바꼭질1 이랑 같은 문제인 줄 알고 ?? 했어요ㅋㅋ 다른 그림 찾기하니까 보이더라구요ㅎ..
