@@ -6,8 +6,6 @@ class Main {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		// input
-//		Scanner sc = new Scanner(System.in);
-//		int n = sc.nextInt();
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(in.readLine());
 		int ret[] = new int[n+1];
@@ -33,6 +31,5 @@ class Main {
 		}
 		// output
 		System.out.println(ret[n]);
-		//sc.close();
 	}
 }
