@@ -7,7 +7,7 @@ N*N 체스판의 행을 탐색할 때 퀸이 위치할 수 있는 모든 열에 
 
 **[제약 조건 1]** 퀸 위치의 왼쪽 수평선, 왼쪽위 대각선, 수직선 윗 방향, 오른쪽위 대각선,오른쪽 수평선, 오른쪽아래 대각선, 아래 수직선, 왼쪽아래 대각선은 퀸이 공격할 수 있는 범위이므로 다음 차례(행) 퀸이 놓일 수 없는 위치 입니다.             
 -> 다음 차례(행) 퀸이 갈 수 없는 위치를 수업시간에 배운 8방탐색을 이용해 visited배열에 마킹했습니다.
-```
+```java
 private static int totalCnt = 0;
 private static int N = 0;
 private static int[] dr = {0,-1,-1,-1,0,1,1,1}; //가장 왼 --> 시계방향 8방 offset.
@@ -19,7 +19,7 @@ private static int[] dc = {-1,-1,0,1,1,1,0,-1};
 1. visited를 int형 배열로 main함수에 선언한 뒤, Nqueen을 구하는 재귀함수의 인자로 넘겨주었습니다.   
 2. 체크시 visited배열 요소의 값을 +1 해주었고, 요소의 값이 0일 경우에만 uncheckd한 곳으로 보도록 했습니다. 이후 복귀할 때는 -1을 하도록 했습니다.        
 
-```
+```java
 public static void main(String[] args) throws IOException {
   BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
   N = Integer.parseInt(in.readLine());
@@ -33,7 +33,7 @@ public static void main(String[] args) throws IOException {
 
 **[제약 조건 3]** 체스판 한 행에 대해 퀸이 놓일 수 있는 모든 체스판의 열을 타고 내려가봐야 합니다.        
 -> visited배열을 사용해 공격할 수 있는 모든 곳을 체크한 뒤 다음 차례(다음 행) 퀸을 구하고자 했습니다. 이후 아직 행탐색이 끝나지 않았기 때문에 마킹했던 곳을 복구 시킨 뒤 같은 행에 퀸이 놓일 수 있는 다른 경우의 수를 구하도록 했습니다.
-```
+```java
 private static void getNQueen(int level, int[][] visited) {
   if(level == N) {
     totalCnt++;
