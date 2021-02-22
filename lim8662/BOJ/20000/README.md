@@ -13,76 +13,92 @@
 ### 1. 전체 
 
 ```java
-public class boj_16166_subway {
+public class boj_20422_str {
 	
-	static int N, D, cnt = 0;
-	static HashMap<Integer, List<Integer>> map = new HashMap<>(); // key : 역번호, value : 연결된 호선 리스트 
-	static List<Integer>[] lines; // 호선별 역정보 
-	static boolean[] visited; // 호선 방문 여부
+	static HashMap<Character, Character> map = new HashMap<>();
+	
+	static void initMap() {
+        map.put('A', 'A'); map.put('E', '3'); map.put('H', 'H');
+        map.put('I', 'I'); map.put('M', 'M'); map.put('O', 'O');
+        map.put('S', '2'); map.put('T', 'T'); map.put('U', 'U');
+        map.put('V', 'V'); map.put('W', 'W'); map.put('X', 'X');
+        map.put('Y', 'Y'); map.put('Z', '5'); map.put('b', 'd');
+        map.put('d', 'b'); map.put('i', 'i'); map.put('l', 'l');
+        map.put('m', 'm'); map.put('n', 'n'); map.put('o', 'o');
+        map.put('p', 'q'); map.put('q', 'p'); map.put('r', '7');
+        map.put('u', 'u'); map.put('v', 'v'); map.put('w', 'w');
+        map.put('x', 'x'); map.put('0', '0'); map.put('1', '1');
+        map.put('2', 'S'); map.put('3', 'E'); map.put('5', 'Z');
+        map.put('7', 'r'); map.put('8', '8');
+    }
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
-		N = Integer.parseInt(br.readLine());
-		lines = new List[N+1];
-		visited = new boolean[N+1];
-		StringTokenizer st;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str = br.readLine();
 		
-		for (int l = 1; l <= N; l++) { // 호선 번호
-			st = new StringTokenizer(br.readLine());
-			int K = Integer.parseInt(st.nextToken()); // 호선의 역 개수
-			ArrayList<Integer> line = new ArrayList<>(); // 현 호선의 역정보
-			
-			for (int j = 0; j < K; j++) {
-				int n = Integer.parseInt(st.nextToken()); // 역 번호
-				line.add(n);
-				
-				if(map.containsKey(n)) { // 이미 있는 역이면 호선 추가
-					List<Integer> lines = map.get(n);
-					lines.add(l);
-					map.put(n, lines);
-				}
-				else  { // 없던 역이면 map에 추가
-					List<Integer> lines = new ArrayList<>();
-					lines.add(l);
-					map.put(n, lines); 
-				}
-			}
-			lines[l] = line;
-		}
-		D = Integer.parseInt(br.readLine()); // 종착역 번호
-		
-		bfs();
-		
-		System.out.println(cnt);
+		initMap(); // 대칭 표
+
+		System.out.println(solve(str));
 	}
-	
-	private static void bfs() {
-		Queue<Integer> q = new ArrayDeque<>(); // 방문할 호선을 저장 
-		
-		for(int line : map.get(0)) { 
-			q.add(line); // 출발역의 호선 큐에 저장
-			visited[line] = true; // 호선 방문 처리
-		}
-		
-		while (!q.isEmpty()) {
-			int size = q.size();
+
+	public static String solve(String str) {
+		int len = str.length();
+		if(len == 0) return "-1"; // 길이가 0이면 무효
 			
-			for (int i = 0; i < size; i++) { // 현 단계의 모든 호선 탐색
-				int cur = q.remove(); // 현재 호선
-				
-				if(lines[cur].contains(D)) return; // 도착역이 있는 호선이면 탐색 종료
-				
-				// 현 호선 역들의 환승 호선 찾기
-				for(int num : lines[cur]) 
-				for(int line : map.get(num)) {
-					if(visited[line]) continue;
-					q.add(line);
-					visited[line] = true;
-				}
+		int s = 0, e = len-1; // 문자열 시작과 끝 인덱스
+		while(s <= e) {
+			char lc = str.charAt(s); // 왼쪽 문자 
+			char rc = str.charAt(e); // 오른쪽 문자
+			if(map.containsKey(lc) && map.get(lc) == rc) { // 대칭이면 넘어감
+				s++; e--; continue;
 			}
-	    	cnt++;	// 다음 단계로 넘어감 
+			else { // 대칭이 아니면
+				char nc; // 변환된 문자
+				if(!map.containsKey(lc)) { // 대칭이 없는 문자를 대소문자 변환
+					if(Character.isLowerCase(lc)) nc = Character.toUpperCase(lc);
+					else nc = Character.toLowerCase(lc);
+					
+					if(!map.containsKey(nc)) return "-1"; // 바꾸어도 대칭이 없다면 무효
+					
+					if(map.get(nc) == rc) { // 대칭이면 바꾸고 넘어감
+						str = str.replace(lc, nc);
+						s++; e--; continue;
+					} else if(lc == rc && map.get(nc) == nc){ // 원본이 같은 문자고 변환 문자가 홀로 대칭이면 둘다 변환
+						str = str.replace(lc, nc);
+						s++; e--; continue;
+					} else if(!map.containsKey(rc)) { // 오른쪽 문자도 대칭이 없다면 변환
+						char nrc; // 바꾼 오른쪽 문자
+						if(Character.isLowerCase(rc)) nrc = Character.toUpperCase(rc);
+						else nrc = Character.toLowerCase(rc);
+						
+						if(map.get(nc) == nrc) { // 대칭이면 바꾸고 넘어감
+							str = str.replace(lc, nc);
+							str = str.replace(rc, nrc);
+							s++; e--; continue;
+						} else {
+							return "-1";
+						}	
+					} else {
+						return "-1";
+					}
+					
+				}
+				else { // 오른쪽 문자가 대칭이 있다면 왼쪽 문자 변환
+					if(Character.isLowerCase(rc)) nc = Character.toUpperCase(rc);
+					else nc = Character.toLowerCase(rc);
+					
+					if(!map.containsKey(nc)) return "-1"; // 바꾸어도 대칭이 없다면 무효
+					
+					if(map.get(nc) == lc) { // 대칭이면 바꾸고 넘어감
+						str = str.replace(rc, nc);
+						s++; e--; continue;
+					} else {
+						return "-1";
+					}
+				}			
+			}
 		}
-		cnt = -1; // 도착역을 못찾은 경우
+		return str;
 	}
 }
 ```
