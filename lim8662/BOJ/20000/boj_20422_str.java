@@ -78,7 +78,9 @@ public class boj_20422_str {
 				else { // 오른쪽 문자가 대칭이 있다면 왼쪽 문자 변환
 					if(Character.isLowerCase(rc)) nc = Character.toUpperCase(rc);
 					else nc = Character.toLowerCase(rc);
-				
+					
+					if(!map.containsKey(nc)) return "-1"; // 바꾸어도 대칭이 없다면 무효
+					
 					if(map.get(nc) == lc) { // 대칭이면 바꾸고 넘어감
 						str = str.replace(rc, nc);
 						s++; e--; continue;
