@@ -17,6 +17,13 @@
 
 ## 전체 코드
 ```java
+package 스터디._2월3주;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+
 public class Boj20422퀼린드롬 {
 	static HashMap<Character, Character> map = new HashMap<Character, Character>();
 	static char[] str, ans;
@@ -30,24 +37,32 @@ public class Boj20422퀼린드롬 {
 		setMap();
 
 		int mid = 0;
-		
-		//중간 인덱스 설정
+
+		// 중간 인덱스 설정
 		if (str.length % 2 == 0) {
 			mid = str.length / 2;
 		} else {
 			mid = (str.length / 2) + 1;
 		}
-		
-		
+
 		for (int i = 0; i < mid; i++) {
 			int idxB = str.length - 1 - i;
 
 			if (i == mid - 1) { // 마지막 검사위치일때
 				if (str.length % 2 == 1) { // 홀수 퀼린드롬이면
-					// 대칭표에 있고, 대칭과 원본이 같은 값이면
-					if (map.containsKey(str[i]) && map.get(str[i]) == str[i]) {
-						ans[i] = str[i];
-						break;
+					if (Character.isAlphabetic(str[i])) { // 알파벳일떄
+						// 대칭표에 있고, 대칭과 원본이 같은 값이면
+						if (map.containsKey(str[i]) && map.get(str[i]) == str[i]) {
+							ans[i] = str[i];
+							break;
+						}// 대칭표에 있고, 대칭과 원본이 다른 값이면 대소 변환 해보기
+						else if(map.containsKey(str[i]) && map.get(str[i]) != str[i]) {
+							if(smallToBig(i)) return;
+						}
+						if (!map.containsKey(str[i])) { //대칭표에없으면 대소 변환후 대칭표보기
+							if(smallToBig(i)) return;
+						}
+
 					}
 				}
 			}
@@ -85,8 +100,24 @@ public class Boj20422퀼린드롬 {
 		}
 		System.out.println(sb.toString());
 	}
+	
+	//트루이면 퀼린드롬 불가능
+	private static boolean smallToBig(int i) {
+		char c;
+		if (Character.isUpperCase(str[i])) { // 대문자이면 소문자로
+			c = Character.toLowerCase(str[i]);
+		} else { // 소문자이면 대문자로
+			c = Character.toUpperCase(str[i]);
+		}
+		
+		if (map.containsKey(c) && map.get(c) == c) {
+			ans[i] = c;
+			return false;
+		}
+		System.out.println("-1");
+		return true;
+	}
 
-    //대칭관계
 	private static void setMap() {
 		map.put('A', 'A');
 		map.put('E', '3');
@@ -126,6 +157,7 @@ public class Boj20422퀼린드롬 {
 	}
 
 }
+
 ```
 
 ### 
