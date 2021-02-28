@@ -96,7 +96,7 @@ public class Main {
             jewels.add(jew);
         }
 
-        Collections.sort(jewels); //무게 거벼운 순으로 정렬
+        Collections.sort(jewels); //무게 가벼운 순으로 정렬
 
         for (int k = 0; k < K; k++) {
             int weight = Integer.parseInt(br.readLine());
