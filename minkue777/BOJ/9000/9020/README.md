@@ -9,9 +9,9 @@
 
 ```java 
 for(int i=2; i<n; i++) {
-    if(n % 2 == 0) return false;
-    returnt true;    
+    if(n % i == 0) return false;
 }
+returnt true;    
 ```
 
 이는 시간복잡도 O(n)의 알고리즘으로 만약 `1부터 N까지 모든 소수`를 다 찾아야 한다면
