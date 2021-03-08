@@ -61,7 +61,7 @@
 넵... 각각 전위,중위,후위순회입니다. 배열범위를 넘어가거나 배열의0번을 가리키는 경우를 빼고 재귀를 돌아 탐색합니다. 
 
 ### 전체코드
-```
+```java
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
