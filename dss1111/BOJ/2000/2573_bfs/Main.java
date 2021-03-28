@@ -26,13 +26,13 @@ public class Main {
 		int year=0;
 		while(ice!=0) {
 			year++;
-			melt();
-			if(countIce()>=2) {
+			melt(); //녹이기
+			if(countIce()>=2) { //그룹이 2개이상
 				System.out.println(year);
 				return;
 			}
 		}
-		System.out.println(0);
+		System.out.println(0); //끝까지 2개이상의 그룹으로 나뉘지 않은 경우
 	}
 	static void melt() {
 		for(int n=1;n<N-1;n++) {
