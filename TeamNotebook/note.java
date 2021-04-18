@@ -83,6 +83,7 @@ public class note {
      @param cnt                 : 재귀호출을 위한 변수. 처음 호출시 반드시 cnt에 size 입력
      @param order               : 구하고 싶은 순열의 순서
      */
+
     static void nthPermutation(int cnt, long order) {
         if(cnt == 0) return;
 
@@ -226,23 +227,27 @@ public class note {
             if(isPrime[i]) System.out.print(i + " ");
         }
          */
-
+        
         /* nextPermutation 테스트 코드
-        int[] perm = {1, 2, 3, 4};
-        do {
-            for(int d : perm) {
+        int[] input = {1, 2, 3, 4};
+        while(nextPermutation(input)) {
+            for(int d : input) {
                 System.out.print(d + " ");
             }
             System.out.println();
-        } while(nextPermutation(perm));
+        }
          */
 
         /* nthPermutation(int[]) 테스트 코드
-        int[] perm = {1, 2, 3, 4};
-        System.out.println(nthPermutation(perm));
+        int[] input = {1, 2, 3, 4};
+        System.out.println(nthPermutation(input));
          */
-
+        
         /* nthPermutation(int, long) 테스트 코드
+        size = 4;
+        choice = new int[size];
+        isSelected = new boolean[size+1];
+
         nthPermutation(size, 1);
         for(int d : choice) {
             System.out.print(d + " ");
