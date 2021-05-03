@@ -30,12 +30,6 @@ public class Main {
             map.putIfAbsent(list.get(i), i);
         }
 
-        for (int i = 1; i < len; i++) {
-            int now = list.get(i);
-            int past = list.get(i - 1);
-            map.replace(now, map.get(past) + 1);
-        }
-
         for(int num : arr){
             sb.append(map.get(num)).append(" ");
         }
